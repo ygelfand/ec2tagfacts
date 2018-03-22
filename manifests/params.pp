@@ -42,7 +42,7 @@ class ec2tagfacts::params {
     'CentOS', 'RedHat' , 'OEL', 'OracleLinux': {
       $awscli       = 'awscli'
       $enable_epel  = true
-      if ($::operatingsystemmajrelease + 0) >= (7 + 0) {
+      if Integer($::operatingsystemmajrelease) >= (7 + 0) {
         $pippkg       = false # centos7 has awscli in epel as an rpm
         $rubyjsonpkg  = 'rubygem-json'
         $awscli_pkg   = 'yum' # package provider for centos7
@@ -55,7 +55,7 @@ class ec2tagfacts::params {
     'Fedora': {
       $awscli       = 'awscli'
       $enable_epel  = true
-      if ($::operatingsystemmajrelease + 0) >= (22 + 0) {
+      if Integer($::operatingsystemmajrelease) >= (22 + 0) {
         $pippkg       = false
         $rubyjsonpkg  = 'rubygem-json'
         $awscli_pkg   = 'yum'
